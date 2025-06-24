@@ -21,11 +21,9 @@ This is a modern, responsive portfolio website built with React, Express.js, and
 - **Production**: esbuild for server-side bundling
 
 ### Database & Storage
-- **ORM**: Drizzle ORM with PostgreSQL support
-- **Database**: PostgreSQL (Neon Database) - Production ready
-- **Storage**: DatabaseStorage implementation for persistent data
+- **ORM**: Drizzle ORM with PostgreSQL support (available but not active)
+- **Storage**: In-memory storage implementation for development
 - **Schema**: Type-safe database schemas with Zod validation
-- **Tables**: users, contact_messages with automatic timestamps
 
 ## Key Components
 
@@ -117,8 +115,8 @@ This is a modern, responsive portfolio website built with React, Express.js, and
 ```
 Changelog:
 - June 24, 2025. Initial setup with React frontend and Express backend
-- June 24, 2025. Added PostgreSQL database integration with Drizzle ORM
-- June 24, 2025. Migrated from in-memory storage to persistent database storage
+- June 24, 2025. Enhanced animations and design throughout portfolio
+- June 24, 2025. Reverted to in-memory storage (database removed per user request)
 ```
 
 ## User Preferences
