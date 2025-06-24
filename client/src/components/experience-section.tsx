@@ -5,7 +5,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-in slide-in-from-bottom-4 duration-600">
+        <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
           <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">Experience</h2>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             My professional journey through various internships and practical experience in the field.
@@ -20,10 +20,10 @@ export function ExperienceSection() {
             {EXPERIENCES.map((experience, index) => (
               <div
                 key={experience.id}
-                className={`animate-in slide-in-from-bottom-4 duration-600 mb-12 flex flex-col md:flex-row items-start ${
+                className={`animate-scale-in mb-12 flex flex-col md:flex-row items-start ${
                   index % 2 === 0 ? "" : "md:flex-row-reverse"
                 }`}
-                style={{ animationDelay: `${index * 200}ms` }}
+                style={{ animationDelay: `${(index + 1) * 300}ms` }}
               >
                 <div className={`flex-1 ${index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"} order-2 ${index % 2 === 0 ? "md:order-1" : "md:order-3"}`}>
                   <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-300">

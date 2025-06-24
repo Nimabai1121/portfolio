@@ -24,9 +24,9 @@ export function HeroSection() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
       <div className="container mx-auto px-6 py-20">
-        <div className="text-center animate-in slide-in-from-bottom-4 duration-800">
+        <div className="text-center animate-fade-in-up">
           <div className="mb-8">
-            <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mb-6 animate-bounce">
+            <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mb-6 animate-bounce-gentle shadow-2xl">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
                 <span className="text-blue-600 text-2xl font-bold">YN</span>
               </div>

@@ -6,7 +6,7 @@ export function SkillsSection() {
   return (
     <section id="skills" className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-in slide-in-from-bottom-4 duration-600">
+        <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
           <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">Skills</h2>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             Technologies and tools I work with to bring ideas to life.
@@ -18,8 +18,8 @@ export function SkillsSection() {
             {SKILLS.map((skill, index) => (
               <Card
                 key={skill.id}
-                className="animate-in slide-in-from-bottom-4 duration-600 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="animate-scale-in bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
+                style={{ animationDelay: `${(index + 1) * 150}ms` }}
               >
                 <CardContent className="p-6">
                   <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${skill.color} rounded-full flex items-center justify-center`}>

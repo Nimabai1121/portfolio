@@ -71,7 +71,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-in slide-in-from-bottom-4 duration-600">
+        <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
           <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">Get In Touch</h2>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             Have a project in mind or want to collaborate? I'd love to hear from you!
@@ -79,7 +79,7 @@ export function ContactSection() {
         </div>
 
         <div className="max-w-2xl mx-auto">
-          <Card className="animate-in slide-in-from-bottom-4 duration-600 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-xl">
+          <Card className="animate-scale-in bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-xl" style={{ animationDelay: "0.4s" }}>
             <CardContent className="p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
