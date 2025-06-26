@@ -8,6 +8,9 @@ import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { Mail, MapPin, Github, Linkedin, Twitter, Send, Loader2 } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import emailjs from "@emailjs/browser";
+
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -16,27 +19,37 @@ export function ContactSection() {
     message: "",
   });
   const { toast } = useToast();
+  const { ref, isIntersecting } = useIntersectionObserver();
+const [isSending, setIsSending] = useState(false);
 
-  const contactMutation = useMutation({
-    mutationFn: async (data: { name: string; email: string; message: string }) => {
-      return await apiRequest("POST", "/api/contact", data);
-    },
-    onSuccess: async (response) => {
-      const result = await response.json();
-      toast({
-        title: "Success!",
-        description: result.message,
-      });
-      setFormData({ name: "", email: "", message: "" });
-    },
-    onError: (error) => {
-      toast({
-        title: "Error!",
-        description: error.message || "Something went wrong. Please try again.",
-        variant: "destructive",
-      });
-    },
-  });
+const sendEmail = async () => {
+  setIsSending(true);
+
+  try {
+    const result = await emailjs.send(
+      "service_e8pjus4",      // Replace with your EmailJS Service ID
+      "template_oaajweo",     // Replace with your EmailJS Template ID
+      formData,
+      "zJlGooc6sqsU3uJYz"       // Replace with your EmailJS Public Key
+    );
+
+    toast({
+      title: "Success!",
+      description: "Message sent successfully!",
+    });
+
+    setFormData({ name: "", email: "", message: "" });
+  } catch (error) {
+    toast({
+      title: "Error!",
+      description: "Failed to send message. Please try again.",
+      variant: "destructive",
+    });
+  }
+
+  setIsSending(false);
+};
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +63,8 @@ export function ContactSection() {
       return;
     }
 
-    contactMutation.mutate(formData);
+    sendEmail();
+    setIsSending(false);
   };
 
   const handleInputChange = (field: string) => (
@@ -69,17 +83,17 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <section ref={ref} id="contact" className="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">Get In Touch</h2>
+        <div className={`text-center mb-16 animate-on-scroll ${isIntersecting ? 'animate-in-view' : ''}`}>
+          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">📞Get In Touch</h2>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you!
+            I'd love to hear from you!
           </p>
         </div>
 
         <div className="max-w-2xl mx-auto">
-          <Card className="animate-scale-in bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-xl" style={{ animationDelay: "0.4s" }}>
+          <Card className={`animate-scale bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-xl ${isIntersecting ? 'animate-in-view' : ''}`} style={{ transitionDelay: isIntersecting ? '0.2s' : '0s' }}>
             <CardContent className="p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -129,10 +143,10 @@ export function ContactSection() {
 
                 <Button
                   type="submit"
-                  disabled={contactMutation.isPending}
+                  disabled={isSending}
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800"
                 >
-                  {contactMutation.isPending ? (
+                  {isSending ? (
                     <span className="flex items-center justify-center">
                       <Loader2 className="w-5 h-5 mr-2 animate-spin" />
                       Sending...
@@ -153,7 +167,7 @@ export function ContactSection() {
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
               <div className="flex items-center text-slate-600 dark:text-slate-300">
                 <Mail className="text-blue-600 mr-3 w-5 h-5" />
-                <span>your.email@example.com</span>
+                <span>.com</span>
               </div>
               <div className="flex items-center text-slate-600 dark:text-slate-300">
                 <MapPin className="text-blue-600 mr-3 w-5 h-5" />

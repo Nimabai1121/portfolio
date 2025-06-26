@@ -22,7 +22,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center">
             <p className="text-lg mb-4">
-              © 2024 <span className="font-semibold">Your Name</span>. All rights reserved.
+              © 2025 <span className="font-semibold">Nima Tashi Tamang</span>. All rights reserved. 📞 +975-77790864
             </p>
             <p className="text-slate-400">
               Built with ❤️ using React, Express, and modern web technologies

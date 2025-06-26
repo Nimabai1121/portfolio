@@ -1,14 +1,26 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { EXPERIENCES } from "@/lib/constants";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 export function ExperienceSection() {
+  const { ref, isIntersecting } = useIntersectionObserver();
+
   return (
-    <section id="experience" className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
+    <section
+      ref={ref}
+      id="experience"
+      className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300"
+    >
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">Experience</h2>
+        <div
+          className={`text-center mb-16 animate-on-scroll ${isIntersecting ? "animate-in-view" : ""}`}
+        >
+          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">
+            Experience
+          </h2>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            My professional journey through various internships and practical experience in the field.
+            My professional journey through various internships and practical
+            experience in the field.
           </p>
         </div>
 
@@ -20,17 +32,29 @@ export function ExperienceSection() {
             {EXPERIENCES.map((experience, index) => (
               <div
                 key={experience.id}
-                className={`animate-scale-in mb-12 flex flex-col md:flex-row items-start ${
+                className={`animate-scale mb-12 flex flex-col md:flex-row items-start ${
                   index % 2 === 0 ? "" : "md:flex-row-reverse"
-                }`}
-                style={{ animationDelay: `${(index + 1) * 300}ms` }}
+                } ${isIntersecting ? "animate-in-view" : ""}`}
+                style={{
+                  transitionDelay: isIntersecting
+                    ? `${(index + 1) * 200}ms`
+                    : "0s",
+                }}
               >
-                <div className={`flex-1 ${index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"} order-2 ${index % 2 === 0 ? "md:order-1" : "md:order-3"}`}>
+                <div
+                  className={`flex-1 ${index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8"} order-2 ${index % 2 === 0 ? "md:order-1" : "md:order-3"}`}
+                >
                   <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-300">
                     <CardContent className="p-6">
-                      <div className={`flex items-center mb-3 ${index % 2 === 0 ? "justify-start md:justify-end" : "justify-start"}`}>
-                        <i className={`${experience.icon} text-blue-600 mr-2 text-lg`}></i>
-                        <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">{experience.year}</span>
+                      <div
+                        className={`flex items-center mb-3 ${index % 2 === 0 ? "justify-start md:justify-end" : "justify-start"}`}
+                      >
+                        <i
+                          className={`${experience.icon} text-blue-600 mr-2 text-lg`}
+                        ></i>
+                        <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">
+                          {experience.year}
+                        </span>
                       </div>
                       <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-2">
                         {experience.role} at {experience.company}
@@ -41,12 +65,16 @@ export function ExperienceSection() {
                     </CardContent>
                   </Card>
                 </div>
-                
-                <div className={`flex items-center justify-center w-16 h-16 ${experience.color} rounded-full border-4 border-white dark:border-slate-800 mx-auto md:mx-0 order-1 md:order-2 mb-4 md:mb-0 shadow-lg`}>
+
+                <div
+                  className={`flex items-center justify-center w-16 h-16 ${experience.color} rounded-full border-4 border-white dark:border-slate-800 mx-auto md:mx-0 order-1 md:order-2 mb-4 md:mb-0 shadow-lg`}
+                >
                   <i className={`${experience.icon} text-white text-lg`}></i>
                 </div>
-                
-                <div className={`flex-1 order-3 ${index % 2 === 0 ? "hidden md:block" : "md:order-1 hidden md:block"}`}></div>
+
+                <div
+                  className={`flex-1 order-3 ${index % 2 === 0 ? "hidden md:block" : "md:order-1 hidden md:block"}`}
+                ></div>
               </div>
             ))}
           </div>

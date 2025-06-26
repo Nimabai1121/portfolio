@@ -1,7 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { useTypingAnimation } from "../hooks/use-typingi-animation.ts";
 
 export function HeroSection() {
+  const typingAnimation = useTypingAnimation({
+    words: [
+      "🎓Instrumentation and Control Engineering Student",
+      "Open to Learning Always 📘", 
+      "Automation & Control Systems Enthusiast🚀",
+      "Problem Solver💡",
+      "Tech Enthusiast"
+    ],
+    typingSpeed: 120,
+    deletingSpeed: 60,
+    pauseDuration: 1500,
+    startDelay: 1000
+  });
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -15,10 +30,9 @@ export function HeroSection() {
   };
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com", bgColor: "bg-gray-800 hover:bg-gray-900" },
-    { icon: Linkedin, href: "https://linkedin.com", bgColor: "bg-blue-600 hover:bg-blue-700" },
-    { icon: Mail, href: "mailto:your.email@example.com", bgColor: "bg-slate-600 hover:bg-slate-700" },
-    { icon: Twitter, href: "https://twitter.com", bgColor: "bg-purple-600 hover:bg-purple-700" },
+    { icon: Github, href: "https://github.com/Nimabai1121", bgColor: "bg-gray-800 hover:bg-gray-900" },
+    { icon: Linkedin, href: "https://www.linkedin.com/feed/", bgColor: "bg-blue-600 hover:bg-blue-700" },
+    { icon: Mail, href: "bainima06@gmail.com", bgColor: "bg-slate-600 hover:bg-slate-700" },
   ];
 
   return (
@@ -34,11 +48,15 @@ export function HeroSection() {
           </div>
           
           <h1 className="text-5xl md:text-6xl font-bold text-slate-800 dark:text-slate-100 mb-4">
-            Your Full Name
+            Nima Tashi Tamang
           </h1>
           
-          <h2 className="text-2xl md:text-3xl text-blue-600 dark:text-blue-400 font-medium mb-6">
-            Aspiring Software Engineer
+          <h2 className="text-2xl md:text-3xl text-blue-600 dark:text-blue-400 font-medium mb-6 min-h-[3rem] flex items-center justify-center">
+            <span>Aspiring : </span>
+            <span className="ml-1">
+              {typingAnimation.text}
+              <span className="typing-cursor ml-1 h-8 w-0.5"></span>
+            </span>
           </h2>
           
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">

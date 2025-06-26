@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 import { useTheme } from "@/hooks/use-theme";
 
 type ThemeContextType = {
-  theme: "light" | "dark";
+  theme: "light" | "blue" | "dark";
   toggleTheme: () => void;
 };
 

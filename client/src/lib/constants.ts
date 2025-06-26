@@ -33,88 +33,95 @@ export const EXPERIENCES: Experience[] = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    name: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with user authentication, payment integration, and admin dashboard.",
-    techStack: ["React", "Node.js", "MongoDB"],
+    name: "🌿Grensense",
+    description: "A smart agriculture solution focused on greenhouses, using automation and IOT.",
+    techStack: ["React Native", "Express + Node.js", "NeonDB" ,"Upstash Redis"],
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
-    imageUrl: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400"
+    imageUrl: "https://voltpolymer.com/wp-content/uploads/2023/11/Improved-Crop-Quality.jpg"
   },
   {
     id: 2,
-    name: "Weather Analytics App",
-    description: "Mobile application for weather data visualization and analytics with real-time updates and forecasting.",
-    techStack: ["React Native", "Python", "FastAPI"],
+    name: "📱Wallet Mobile App",
+    description: "A mobile app for managing personal finances with budgeting, expense tracking, and investment tracking.",
+    techStack: ["React Native", "Neon Db", "FastAPI" ,"redis"],
     githubUrl: "https://github.com",
+   //
     liveUrl: "https://example.com",
-    imageUrl: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400"
+    imageUrl: "https://www.softwaregroup.com/images/default-source/landing-pages/mwallet/mobile-wallet-screens4fc36895e42a42eda9dc055208ac7f70.png?sfvrsn=590722c5_0"
   },
   {
     id: 3,
-    name: "Automation Dashboard",
-    description: "Intelligent automation system with machine learning capabilities for process optimization and monitoring.",
-    techStack: ["Python", "TensorFlow", "Docker"],
+    name: "🩺Simple ECG Patient Monitoring System",
+    description: "A simple ECG patient monitoring system using machine learning and IoT devices.",
+    techStack: ["Python", "TensorFlow", "Arduino" , "Flask"],
     githubUrl: "https://github.com",
     liveUrl: "https://example.com",
-    imageUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400"
+    imageUrl: "https://getwellue.com/cdn/shop/files/standardviewof8inchpatientmonitor_1200x1200.jpg?v=1743139801"
   }
 ];
 
 export const SKILLS: Skill[] = [
   {
     id: 1,
-    name: "HTML5",
+    name: "Programing and IOT Integration",
     level: 90,
-    icon: "fab fa-html5",
+    icon: "fas fa-laptop-code",
     color: "from-orange-400 to-red-500"
   },
   {
     id: 2,
-    name: "CSS3",
+    name: "Control Systems and Simulation",
     level: 85,
-    icon: "fab fa-css3-alt",
+    icon: "fas fa-cogs",
+    //icon: "fab fa-css3-alt",
     color: "from-blue-400 to-blue-600"
   },
   {
     id: 3,
-    name: "JavaScript",
+    name: "IOT Architecture and Communication Protocols",
     level: 80,
-    icon: "fab fa-js-square",
+    icon: "fas fa-network-wired",
+   // icon: "fas fa-network-wired",
     color: "from-yellow-400 to-yellow-600"
   },
   {
     id: 4,
-    name: "React",
+    name: "Instrmentation, Senors and Sigal Conditioning",
     level: 75,
-    icon: "fab fa-react",
+    icon: "fas fa-microchip",
+    //icon: "fab fa-react",
     color: "from-cyan-400 to-blue-500"
   },
   {
     id: 5,
-    name: "Node.js",
+    name: "PLC ,SCADA , DCS and HMI programming",
     level: 70,
-    icon: "fab fa-node-js",
+    icon: "fas fa-cogs",
+   // icon: "fab fa-node-js",
     color: "from-green-400 to-green-600"
   },
   {
     id: 6,
-    name: "Python",
+    name: "Python for Data Analysis and Automation",
     level: 85,
     icon: "fab fa-python",
     color: "from-blue-500 to-indigo-600"
   },
   {
     id: 7,
-    name: "Git",
+    name: "Version control and CI/CD with Git",
     level: 80,
     icon: "fab fa-git-alt",
     color: "from-gray-600 to-gray-800"
   },
   {
     id: 8,
-    name: "MongoDB",
+    name: "Machine Learning for Industrial Automation",
     level: 65,
-    icon: "fas fa-database",
-    color: "from-purple-500 to-purple-700"
+    icon: "fas fa-brain",
+    color: "from-purple-400 to-purple-600"
+   // icon: "fas fa-database",
+   // color: "from-purple-500 to-purple-700"
   }
 ];

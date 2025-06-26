@@ -3,13 +3,16 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Github, ExternalLink } from "lucide-react";
 import { PROJECTS } from "@/lib/constants";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 export function ProjectsSection() {
+  const { ref, isIntersecting } = useIntersectionObserver();
+  
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <section ref={ref} id="projects" className="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">Projects</h2>
+        <div className={`text-center mb-16 animate-on-scroll ${isIntersecting ? 'animate-in-view' : ''}`}>
+          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">📁 Projects</h2>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             A collection of my recent work showcasing various technologies and problem-solving approaches.
           </p>
@@ -19,8 +22,8 @@ export function ProjectsSection() {
           {PROJECTS.map((project, index) => (
             <Card
               key={project.id}
-              className="animate-scale-in bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
-              style={{ animationDelay: `${(index + 1) * 200}ms` }}
+              className={`animate-scale bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-blue-500/25 dark:hover:shadow-blue-400/25 transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 hover:bg-blue-50 dark:hover:bg-blue-900/20 ${isIntersecting ? 'animate-in-view' : ''}`}
+              style={{ transitionDelay: isIntersecting ? `${(index + 1) * 150}ms` : '0s' }}
             >
               <img 
                 src={project.imageUrl} 
